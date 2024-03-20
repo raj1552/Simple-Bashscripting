@@ -1,7 +1,7 @@
 
 #For displying menu
 displayMenu(){
-    echo "Welcome to Basic File Management Script"
+    echo "Welcome to Bash Scripting !!"
     echo "1. Create a directory"
     echo "2. List the contents of a directory"
     echo "3. Create an empty file"
@@ -30,7 +30,7 @@ listDirectory() {
     echo "Directory Path Doesn't Exist" 
     return 0
   fi
-    ls -l "$dirPath"
+    ls "$dirPath"
     echo "Above are the list of Directory path: '$dirPath'"
  
 }
@@ -41,6 +41,7 @@ createFile() {
   if [ ! -d "$filename" ]; then
     touch "$fileName"
     echo "File Created Sucessfully"
+    return 0
   fi
 
   echo "File already exists"
@@ -48,6 +49,8 @@ createFile() {
 
 #To write content in a file
 writetoFile() {
+  echo "The Below are the listed files"
+  ls
   read -p "Enter file name: " fileName
   read -p "Enter your full name: " fullName
   echo "$fullName" > "$fileName"
@@ -62,7 +65,8 @@ displayFileContent() {
     return 0
   fi
 
-  cat "$fileName"
+  files=$(cat "$fileName")
+  echo " The content of the file is "$files""
 }
 
 #To delete a File
@@ -76,20 +80,20 @@ deleteFile() {
   fi 
 
   rm "$fileName"
-  echo "File Deleted Scuessfully"
+  echo "File '$fileName' Deleted Sucessfully"
 }
 
 #To Delete Directory
 deleteDirectory() {
   echo "List of Directory"
-  ls
+  ls 
   read -p "Enter Directory name: " dirName
   if [ ! -d "$dirName" ]; then
     echo "Directory Doesn't Exists"
   fi
 
   rm -r "$dirName"
-  echo "Directory Deleted Sucessfully"
+  echo "Directory '$dirName' Deleted Sucessfully"
 }
 
 programeExit () {
