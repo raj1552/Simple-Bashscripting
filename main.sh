@@ -10,6 +10,20 @@ displayMenu(){
     echo "6. Delete a file"
     echo "7. Delete a directory"
     echo "8. Exit"
+
+    read -p "Enter your choice what you want to do: " userChoice
+  
+  case $userChoice in 
+    1) createDirectory ;;
+    2) listDirectory ;;
+    3) createFile ;;
+    4) writetoFile ;;
+    5) displayFileContent ;;
+    6) deleteFile ;;
+    7) deleteDirectory ;;
+    8) programeExit ;;
+    *) echo "Invalid choice choose from number 1-8." ;;
+  esac
 }
 
 #Creating Directory Script
@@ -32,7 +46,6 @@ listDirectory() {
   fi
     ls "$dirPath"
     echo "Above are the list of Directory path: '$dirPath'"
- 
 }
 
 #To create a file
@@ -103,19 +116,6 @@ programeExit () {
 #Main Script
 while true; do 
   displayMenu
-  read -p "Enter your choice what you want to do: " choice
-  
-  case $choice in 
-    1) createDirectory ;;
-    2) listDirectory ;;
-    3) createFile ;;
-    4) writetoFile ;;
-    5) displayFileContent ;;
-    6) deleteFile ;;
-    7) deleteDirectory ;;
-    8) programeExit ;;
-    *) echo "Invalid choice choose from number 1-8." ;;
-  esac
 done
 
 
